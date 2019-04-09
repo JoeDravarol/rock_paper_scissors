@@ -11,6 +11,7 @@
     <p>Open up the developer tool's console to play</p>
 
 <script>
+    let playerSelection, computerSelection;
     let playerScore = 0;
     let aiScore = 0;
 
@@ -67,17 +68,28 @@
         }
     };
 
+    function getSelection() {
+        playerSelection = prompt("Type either Rock, Paper or Scissors");
+        computerSelection = computerPlay();
+    }
 
     function game() {
 
+        for (let i = 0; i < 5; i++) {
+            getSelection();
+            console.log(playRound(playerSelection, computerSelection));
+        }
+        
         if (playerScore > aiScore) {
-            console.log(`The player has won with ${aiScore} score against the ai with ${playerScore} score`);
-        } else if (playerscore < aiScore) {
+            console.log(`The player has won with ${playerScore} score against the ai with ${aiScore} score`);
+        } else if (playerScore < aiScore) {
             console.log(`The ai has won with ${aiScore} score against the player with ${playerScore} score`);
         } else {
             console.log(`It's a draw between both player with ${playerScore} score each`);
         }
     };
+
+    game();
 </script>
 </body>
 </html>
