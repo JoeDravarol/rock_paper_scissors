@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Rock Paper Scissors Game</h1>
-    <p>Open up the developer tools' console</p>
+    <p>Open up the developer tool's console to play</p>
 
 <script>
     function computerPlay() {
@@ -21,7 +21,43 @@
         } else {
             return 'scissors';
         }
-    }        
+    };
+
+    function playRound(playerSelection, computerSelection) {
+        // Making the input to lower case to no worry about value being case sensitive later
+        const p1 = playerSelection.toLowerCase();
+        const ai = computerSelection;
+
+        // Draw condition
+        if (p1 === ai ) {
+            return "It's a draw!";
+
+            // Rock win condition
+        } else if (p1 === 'rock') {
+            if (ai === 'scissors') {
+                return `You win! ${p1} beats ${ai}`;
+            }
+            return `You lose! ${ai} beats ${p1}`;
+
+            // Paper win condition
+        } else if (p1 === 'paper') {
+            if (ai === 'rock') {
+                return `You win! ${p1} beats ${ai}`;
+            }
+            return `You lose! ${ai} beats ${p1}`;
+
+            // Scissors win condition
+        } else {
+            if (ai === 'paper') {
+                return `You win! ${p1} beats ${ai}`;
+            }
+            return `You lose! ${ai} beats ${p1}`;
+        }
+    };
+
+    const playerSelection = 'rock';
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
 </script>
 </body>
 </html>
