@@ -1,0 +1,104 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-color: #DDDDDD;
+  }
+  
+  .title {
+    margin-top: 1em;
+    padding-bottom: 1em;
+    border-bottom: 2px solid #001F3F;
+  }
+  
+  .scoreboard {
+    display: inline-block;
+    background-color: #001F3F;
+    color: #fff;
+    margin: 2em;
+    padding: 1.5em 1em;
+    width: 300px;
+    font-size: 1.5em;
+    position: relative;
+  }
+  
+  .player,
+  .ai {
+    display: inline-block;
+    background-color: #0074D9;
+    padding: .7em .5em;
+    border-radius: 5px;
+    position: absolute;
+    width: 129px;
+  }
+  
+  /* Creating a negative margin effect */
+  .player {
+    top: 25%;
+    left: -70px;
+  }
+  .ai {
+    top: 25%;
+    right: -70px;
+  }
+  
+  .score {
+    font-size: 2em;
+    margin: 0 .5em;
+  }
+  
+  .win-condition {
+    font-size: 2em;
+  }
+  
+  .selections {
+    margin: 2em 0;
+  }
+  
+  .btn {
+    background-color: #001F5F;
+    border: 2px solid #111;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 2em;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    transform: scale(1.2);
+    background-color: #0074D9
+  }
+  
+  .btn img {
+    max-width: 80%;
+  }
+  
+  .selections__description {
+    font-size: 2em;
+  }
+  
+  .reset {
+    font-size: 1.5em;
+    background-color: transparent;
+    border: 2px solid #111;
+    border-radius: 5px;
+    padding: 1em;
+    cursor: pointer;
+  }
+  
+  /* Styles to apply to Winner or Loser using JS */
+  .win {
+     background-color: #3D9970;
+  }
+  
+  .lose {
+    background-color: #FF4136;
+  }
+  
+  

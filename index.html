@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,42 @@
     <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors</title>
 </head>
-<body>
-    <h1>Rock Paper Scissors Game</h1>
-    <p>Open up the developer tool's console to play</p>
 
-<script src="script.js"></script>
+<body>
+    <h1 class="title">Rock Paper Scissors Game</h1>
+
+    <div class="scoreboard">
+        <p>
+            <span class="player">Player</span>
+            <span id="p1Score" class="score">0</span>:<span id="aiScore" class="score">0</span>
+            <span class="ai">Computer</span>
+        </p>
+    </div>
+
+    <p id="win-condition" class="win-condition">First to 5 points win!</p>
+
+    <div class="selections">
+        <button id="rock" class="btn" type="button">
+            <img src="https://dilipagarwal001.github.io/Rock-Paper-Scissor-Game/images/rock.jpg" alt="Rock hand">
+        </button>
+
+        <button id="paper" class="btn" type="button">
+            <img src="https://dilipagarwal001.github.io/Rock-Paper-Scissor-Game/images/paper.jpg" alt="Paper hand">
+        </button>
+
+        <button id="scissors" class="btn" type="button">
+            <img src="https://dilipagarwal001.github.io/Rock-Paper-Scissor-Game/images/scissors.png"
+                alt="Scissors hand">
+        </button>
+
+        <p class="selections__description">Select your move</p>
+    </div>
+
+    <!--
+        <button id="reset" class="reset"  type="button">Play Again</button> 
+    -->
+
+    <script src="script.js"></script>
 </body>
+
 </html>
