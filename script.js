@@ -1,5 +1,6 @@
 let playerScore = 0;
 let aiScore = 0;
+const displayResult = document.querySelector('#win-condition');
 
 function computerPlay() {
     const choice = Math.floor(Math.random() * 3);
@@ -24,7 +25,6 @@ function playRound(e) {
         p1 = e.target.parentElement.id;
     }
 
-    const displayResult = document.querySelector('#win-condition');
     const winResult = `${p1} vs ${ai}. You Win!`;
     const loseResult = `${p1} vs ${ai}. You Lose!`;
 
@@ -38,10 +38,12 @@ function playRound(e) {
             playerScore++;
             displayResult.textContent = winResult;
             updateScore();
+            checkGameEnd()
         } else {
             aiScore++;
             displayResult.textContent = loseResult;
             updateScore();
+            checkGameEnd()
         }
         // Paper win condition
     } else if (p1 === 'paper') {
@@ -49,10 +51,12 @@ function playRound(e) {
             playerScore++;
             displayResult.textContent = winResult;
             updateScore();
+            checkGameEnd()
         } else {
             aiScore++;
             displayResult.textContent = loseResult;
             updateScore();
+            checkGameEnd()
         }
         // Scissors win condition
     } else if (p1 === "scissors") {
@@ -60,17 +64,36 @@ function playRound(e) {
             playerScore++;
             displayResult.textContent = winResult;
             updateScore();
+            checkGameEnd()
         } else {
             aiScore++
             displayResult.textContent = loseResult;
             updateScore();
+            checkGameEnd()
         }
     }
 };
 
-function checkScore() {
-    
+function checkGameEnd() {
+    const selectionsDiv = document.querySelector('.selections');
 
+    if (playerScore === 5 || aiScore === 5) {
+        selectionsDiv.innerHTML = `
+            <button id="reset" class="reset" type="button">Play Again?</button>
+        `;
+    }
+
+    if (playerScore === 5) {
+        displayResult.textContent = "You have won!";
+        selectionsDiv.innerHTML = `
+            <button id="reset" class="reset" type="button">Play Again?</button>
+        `;
+    } else if (aiScore === 5) {
+        displayResult.textContent = "The Computer has won! Better luck next time!";
+        selectionsDiv.innerHTML = `
+            <button id="reset" class="reset" type="button">Play Again?</button>
+        `;
+    }
 }
 
 function updateScore() {
@@ -78,7 +101,7 @@ function updateScore() {
     const computerScore = document.querySelector('#aiScore');
 
     p1Score.textContent = playerScore;
-    computerScore.textContent = aiScore
+    computerScore.textContent = aiScore;
 }
 
 const playerSelections = document.querySelectorAll('.btn');
@@ -86,4 +109,5 @@ const playerSelections = document.querySelectorAll('.btn');
 playerSelections.forEach(selection => {
     selection.addEventListener('click', playRound);
 })
+
 
