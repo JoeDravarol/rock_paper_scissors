@@ -37,30 +37,49 @@ function playRound(e) {
         if (ai === 'scissors') {
             playerScore++;
             displayResult.textContent = winResult;
+            updateScore();
         } else {
             aiScore++;
             displayResult.textContent = loseResult;
+            updateScore();
         }
         // Paper win condition
     } else if (p1 === 'paper') {
         if (ai === 'rock') {
             playerScore++;
-            displayResult.textContent = winResult;;
+            displayResult.textContent = winResult;
+            updateScore();
         } else {
             aiScore++;
             displayResult.textContent = loseResult;
+            updateScore();
         }
         // Scissors win condition
     } else if (p1 === "scissors") {
         if (ai === 'paper') {
             playerScore++;
-            displayResult.textContent = winResult;;
+            displayResult.textContent = winResult;
+            updateScore();
         } else {
             aiScore++
             displayResult.textContent = loseResult;
+            updateScore();
         }
     }
 };
+
+function checkScore() {
+    
+
+}
+
+function updateScore() {
+    const p1Score = document.querySelector('#p1Score');
+    const computerScore = document.querySelector('#aiScore');
+
+    p1Score.textContent = playerScore;
+    computerScore.textContent = aiScore
+}
 
 const playerSelections = document.querySelectorAll('.btn');
 
