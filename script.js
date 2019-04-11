@@ -20,41 +20,44 @@ function playRound(e) {
     // If there's no ID the travese the DOM to find an id
     if (e.target.id) {
         p1 = e.target.id;
-        console.log(p1)
     } else {
         p1 = e.target.parentElement.id;
     }
 
+    const displayResult = document.querySelector('#win-condition');
+    const winResult = `${p1} vs ${ai}. You Win!`;
+    const loseResult = `${p1} vs ${ai}. You Lose!`;
+
     // Draw condition
     if (p1 === ai) {
-        return "It's a draw!";
+        displayResult.textContent = `${p1} vs ${ai}. It's a draw!`;
         
         // Rock win condition
     } else if (p1 === 'rock') {
         if (ai === 'scissors') {
             playerScore++;
-            return `You win! ${p1} beats ${ai}`;
+            displayResult.textContent = winResult;
         } else {
             aiScore++;
-            return `You lose! ${ai} beats ${p1}`;
+            displayResult.textContent = loseResult;
         }
         // Paper win condition
     } else if (p1 === 'paper') {
         if (ai === 'rock') {
             playerScore++;
-            return `You win! ${p1} beats ${ai}`;
+            displayResult.textContent = winResult;;
         } else {
             aiScore++;
-            return `You lose! ${ai} beats ${p1}`;
+            displayResult.textContent = loseResult;
         }
         // Scissors win condition
     } else if (p1 === "scissors") {
         if (ai === 'paper') {
             playerScore++;
-            return `You win! ${p1} beats ${ai}`;
+            displayResult.textContent = winResult;;
         } else {
             aiScore++
-            return `You lose! ${ai} beats ${p1}`;
+            displayResult.textContent = loseResult;
         }
     }
 };
