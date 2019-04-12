@@ -1,6 +1,11 @@
 let playerScore = 0;
 let aiScore = 0;
 const displayResult = document.querySelector('#win-condition');
+const selectionsDiv = document.querySelector('.selections');
+
+selectionsDiv.addEventListener('click', funcToCall);
+
+
 
 function computerPlay() {
     const choice = Math.floor(Math.random() * 3);
@@ -75,7 +80,6 @@ function playRound(e) {
 };
 
 function checkGameEnd() {
-    const selectionsDiv = document.querySelector('.selections');
 
     if (playerScore === 5 || aiScore === 5) {
         selectionsDiv.innerHTML = `
@@ -94,7 +98,7 @@ function checkGameEnd() {
             <button id="reset" class="reset" type="button">Play Again?</button>
         `;
     }
-}
+};
 
 function updateScore() {
     const p1Score = document.querySelector('#p1Score');
@@ -102,12 +106,40 @@ function updateScore() {
 
     p1Score.textContent = playerScore;
     computerScore.textContent = aiScore;
-}
+};
 
-const playerSelections = document.querySelectorAll('.btn');
+function resetGame(e) {
 
-playerSelections.forEach(selection => {
-    selection.addEventListener('click', playRound);
-})
+    playerScore = 0;
+    aiScore = 0;
 
+    updateScore();
+    displayResult.textContent = "First to 5 points Win!";
+    selectionsDiv.innerHTML = `
+        <button id="rock" class="btn" type="button">
+        <img src="https://dilipagarwal001.github.io/Rock-Paper-Scissor-Game/images/rock.jpg" alt="Rock hand">
+        </button>
 
+        <button id="paper" class="btn" type="button">
+            <img src="https://dilipagarwal001.github.io/Rock-Paper-Scissor-Game/images/paper.jpg" alt="Paper hand">
+        </button>
+
+        <button id="scissors" class="btn" type="button">
+            <img src="https://dilipagarwal001.github.io/Rock-Paper-Scissor-Game/images/scissors.png" alt="Scissors hand">
+        </button>
+
+        <p class="selections__description">Select your move</p>
+    `;
+};
+
+function funcToCall(e) {
+
+    if (e.target.className === 'selections') return;
+
+    if (e.target.id === 'reset') {
+        resetGame();
+    } else {
+        playRound(e);
+    }
+    
+};
