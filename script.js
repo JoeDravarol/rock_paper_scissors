@@ -2,6 +2,8 @@ let playerScore = 0;
 let aiScore = 0;
 const displayResult = document.querySelector('#win-condition');
 const selectionsDiv = document.querySelector('.selections');
+const player = document.querySelector('.player');
+const ai = document.querySelector('.ai');
 
 selectionsDiv.addEventListener('click', funcToCall);
 
@@ -92,11 +94,18 @@ function checkGameEnd() {
         selectionsDiv.innerHTML = `
             <button id="reset" class="reset" type="button">Play Again?</button>
         `;
+
+        player.classList.add('win');
+        ai.classList.add('lose');
+
     } else if (aiScore === 5) {
         displayResult.textContent = "The Computer has won! Better luck next time!";
         selectionsDiv.innerHTML = `
             <button id="reset" class="reset" type="button">Play Again?</button>
         `;
+
+        ai.classList.add('win');
+        player.classList.add('lose');
     }
 };
 
@@ -130,6 +139,11 @@ function resetGame(e) {
 
         <p class="selections__description">Select your move</p>
     `;
+
+    player.classList.remove('win');
+    player.classList.remove('lose');
+    ai.classList.remove('win');
+    ai.classList.remove('lose');
 };
 
 function funcToCall(e) {
